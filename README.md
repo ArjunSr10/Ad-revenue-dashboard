@@ -10,7 +10,6 @@ Developed an advertising analytics tool as part of a group project in Java using
 
 <h2>Program Walkthrough:</h2>
 
-Run the program: <br/>
 To launch the application, run the **GUI** class located at: **ad-revenue-dashboard/src/main/java/main/dash/scene/GUI.java**
 
 ## 🔐 Login Page
