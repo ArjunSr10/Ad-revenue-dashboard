@@ -1,0 +1,53 @@
+Text{
+}
+
+
+.slider{
+}
+
+#lineChart {
+  .chart-plot-background {
+    -fx-background-color: transparent;
+  }
+
+  .default-color0.chart-series-line {
+    -fx-stroke: blue;
+  }
+
+  .default-color0.chart-line-symbol {
+    -fx-background-color: blue, white;
+  }
+
+  .default-color1.chart-series-line {
+    -fx-stroke: orange;
+  }
+
+  .default-color1.chart-line-symbol {
+    -fx-background-color: orange, white;
+  }
+}
+
+#barChart {
+  .default-color0.chart-bar {
+    -fx-bar-fill: blue;
+  }
+
+  .default-color1.chart-bar {
+    -fx-bar-fill: orange;
+  }
+}
+
+.chart-line-symbol {
+  -fx-scale-x: 0.75;
+  -fx-scale-y: 0.75;
+}
+
+.chart-title {
+  -fx-wrap-text: true;
+}
+
+.tooltip {
+  -fx-font-size: 12px;
+  -fx-background-color: #f2f2f2;
+  -fx-text-fill: #333;
+}

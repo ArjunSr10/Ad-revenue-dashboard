@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="main.dash.scene.controller.BounceFields" spacing="5">
+  <HBox spacing="5">
+    <Text text="Define bounce time in (s)"/>
+    <TextField fx:id="bounceInput" promptText="Enter time" text="5"/>
+  </HBox>
+  <HBox spacing="5">
+    <Text text="Define the pages viewed"/>
+    <TextField fx:id="pagesInput" promptText="Enter page count" text="1"/>
+  </HBox>
+</VBox>

@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.cell.ComboBoxListCell?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.chart.XYChart.Series?>
+
+<?import org.controlsfx.control.CheckComboBox?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<BorderPane
+  fx:id="root"
+  xmlns:fx="http://javafx.com/fxml"
+  fx:controller="main.dash.scene.controller.DashboardController"
+  stylesheets="@../css/dashboard.css">
+  <padding>
+    <Insets left="5"/>
+  </padding>
+  <top>
+    <VBox spacing="10">
+      <HBox>
+        <MenuBar>
+          <Menu text="File">
+            <Menu text="Export">
+              <MenuItem text="CSV" onAction="#exportCSV"/>
+              <MenuItem text="PDF" onAction="#exportPDF"/>
+            </Menu>
+            <MenuItem text="Import" fx:id="uploadButton"/>
+            <MenuItem text="Exit" onAction="#exit"/>
+          </Menu>
+          <Menu text="User Operations" fx:id="operationsButton" visible="false">
+            <MenuItem text="EXPORT CSV" onAction="#exportOperationCSV"/>
+            <MenuItem text="EXPORT PDF" onAction="#exportOperationPDF"/>
+          </Menu>
+          <Menu text="Edit">
+            <MenuItem text="Example"/>
+          </Menu>
+          <Menu text="Manage Users" fx:id="userManagerButton" visible="false">
+            <MenuItem text="User Manager" fx:id="userManagerItem"/>
+          </Menu>
+          <Menu text="Help">
+            <MenuItem text="Settings" fx:id="settingsButton"/>
+            <MenuItem text="Manual" fx:id="manualButton"/>
+          </Menu>
+        </MenuBar>
+        <Region fx:id="spacer" styleClass="menu-bar"/>
+        <Button text="Logout" fx:id="dashboardReturnButton"/>
+      </HBox>
+    </VBox>
+  </top>
+  <center>
+    <HBox spacing="0">
+      <VBox spacing="0" alignment="CENTER">
+        <Text fx:id="chart1Text" text="No metric" textAlignment="CENTER"/>
+        <Text fx:id="chart1OverlayText" text="No metric" textAlignment="CENTER"/>
+        <StackPane>
+          <BarChart fx:id="barChart" visible="false" animated="false" prefHeight="600" barGap="0" categoryGap="5">
+            <xAxis>
+              <CategoryAxis fx:id="barXAxis"/>
+            </xAxis>
+            <yAxis>
+              <NumberAxis fx:id="barYAxis"/>
+            </yAxis>
+          </BarChart>
+          <LineChart fx:id="lineChart" animated="false" prefHeight="600">
+            <xAxis>
+              <CategoryAxis fx:id="lineXAxis"/>
+            </xAxis>
+            <yAxis>
+              <NumberAxis fx:id="lineYAxis"/>
+            </yAxis>
+          </LineChart>
+          <ImageView fx:id="loadingIcon1" visible="false" preserveRatio="true" fitWidth="50"/>
+        </StackPane>
+        <HBox spacing="5" alignment="CENTER">
+          <Text fx:id="startDateText" text="Start Date:"/>
+          <DatePicker fx:id="startDatePicker"/>
+        </HBox>
+        <HBox spacing="5" alignment="CENTER">
+          <Text fx:id="endDateText" text="End Date:"/>
+          <DatePicker fx:id="endDatePicker"/>
+          <Button fx:id="applyDateFilterButton" text="Apply Dates"/>
+        </HBox>
+        <HBox spacing="5" alignment="CENTER">
+          <Text text="Gender:"/>
+          <CheckComboBox fx:id="genderComboBox">
+            <String fx:value="Male"/>
+            <String fx:value="Female"/>
+          </CheckComboBox>
+          <Text text="Age:"/>
+          <CheckComboBox fx:id="ageComboBox">
+            <String fx:value="&lt;25"/>
+            <String fx:value="25-34"/>
+            <String fx:value="35-44"/>
+            <String fx:value="45-54"/>
+            <String fx:value="&gt;54"/>
+          </CheckComboBox>
+          <Text text="Income:"/>
+          <CheckComboBox fx:id="incomeComboBox">
+            <String fx:value="Low"/>
+            <String fx:value="Medium"/>
+            <String fx:value="High"/>
+          </CheckComboBox>
+          <Text text="Context:"/>
+          <CheckComboBox fx:id="contextComboBox">
+            <String fx:value="Blog"/>
+            <String fx:value="Social Media"/>
+            <String fx:value="News"/>
+            <String fx:value="Shopping"/>
+          </CheckComboBox>
+        </HBox>
+      </VBox>
+
+      <VBox spacing="0" alignment="CENTER">
+        <Text fx:id="chart2Text" text="No metric" textAlignment="CENTER"/>
+        <StackPane fx:id="pane1" visible="false" managed="false">
+          <BarChart fx:id="barChart1" animated="false" prefHeight="600" barGap="0" categoryGap="5">
+            <xAxis>
+              <CategoryAxis fx:id="barXAxis1"/>
+            </xAxis>
+            <yAxis>
+              <NumberAxis fx:id="barYAxis1"/>
+            </yAxis>
+          </BarChart>
+          <LineChart fx:id="lineChart1" animated="false" prefHeight="600">
+            <xAxis>
+              <CategoryAxis fx:id="lineXAxis1"/>
+            </xAxis>
+            <yAxis>
+              <NumberAxis fx:id="lineYAxis1"/>
+            </yAxis>
+          </LineChart>
+          <ImageView fx:id="loadingIcon2" visible="false" preserveRatio="true" fitWidth="50"/>
+        </StackPane>
+        <HBox spacing="5" alignment="CENTER">
+          <Text fx:id="startDateText1" text="Start Date:" visible="false"/>
+          <DatePicker fx:id="startDatePicker1" visible="false"/>
+        </HBox>
+        <HBox spacing="5" alignment="CENTER">
+          <Text fx:id="endDateText1" text="End Date:" visible="false"/>
+          <DatePicker fx:id="endDatePicker1" visible="false"/>
+          <Button fx:id="applyDateFilterButton1" text="Apply Dates" visible="false"/>
+        </HBox>
+        <HBox spacing="5" alignment="CENTER">
+          <Text fx:id="genderText1" text="Gender:" visible="false"/>
+          <CheckComboBox fx:id="genderComboBox1" visible="false">
+            <String fx:value="Male"/>
+            <String fx:value="Female"/>
+          </CheckComboBox>
+          <Text fx:id="ageText1" text="Age:" visible="false"/>
+          <CheckComboBox fx:id="ageComboBox1" visible="false">
+            <String fx:value="&lt;25"/>
+            <String fx:value="25-34"/>
+            <String fx:value="35-44"/>
+            <String fx:value="45-54"/>
+            <String fx:value="&gt;54"/>
+          </CheckComboBox>
+          <Text fx:id="incomeText1" text="Income:" visible="false"/>
+          <CheckComboBox fx:id="incomeComboBox1" visible="false">
+            <String fx:value="Low"/>
+            <String fx:value="Medium"/>
+            <String fx:value="High"/>
+          </CheckComboBox>
+          <Text fx:id="contextText1" text="Context:"  visible="false"/>
+          <CheckComboBox fx:id="contextComboBox1" visible="false">
+            <String fx:value="Blog"/>
+            <String fx:value="Social Media"/>
+            <String fx:value="News"/>
+            <String fx:value="Shopping"/>
+          </CheckComboBox>
+        </HBox>
+      </VBox>
+
+      <VBox spacing="0" alignment="CENTER">
+        <Text fx:id="chart3Text" text="No metric" textAlignment="CENTER"/>
+        <StackPane fx:id="pane2" visible="false" managed="false">
+          <BarChart fx:id="barChart2" animated="false" prefHeight="600" barGap="0" categoryGap="5">
+            <xAxis>
+              <CategoryAxis fx:id="barXAxis2"/>
+            </xAxis>
+            <yAxis>
+              <NumberAxis fx:id="barYAxis2"/>
+            </yAxis>
+          </BarChart>
+          <LineChart fx:id="lineChart2" animated="false" prefHeight="600">
+            <xAxis>
+              <CategoryAxis fx:id="lineXAxis2"/>
+            </xAxis>
+            <yAxis>
+              <NumberAxis fx:id="lineYAxis2"/>
+            </yAxis>
+          </LineChart>
+          <ImageView fx:id="loadingIcon3" visible="false" preserveRatio="true" fitWidth="50"/>
+        </StackPane>
+        <HBox spacing="5" alignment="CENTER">
+          <Text fx:id="startDateText2" text="Start Date:" visible="false"/>
+          <DatePicker fx:id="startDatePicker2" visible="false"/>
+        </HBox>
+        <HBox spacing="5" alignment="CENTER">
+          <Text fx:id="endDateText2" text="End Date:" visible="false"/>
+          <DatePicker fx:id="endDatePicker2" visible="false"/>
+          <Button fx:id="applyDateFilterButton2" text="Apply Dates" visible="false"/>
+        </HBox>
+        <HBox spacing="5" alignment="CENTER">
+          <Text fx:id="genderText2" text="Gender:" visible="false"/>
+          <CheckComboBox fx:id="genderComboBox2" visible="false">
+            <String fx:value="Male"/>
+            <String fx:value="Female"/>
+          </CheckComboBox>
+          <Text fx:id="ageText2" text="Age:" visible="false" textAlignment="CENTER"/>
+          <CheckComboBox fx:id="ageComboBox2" visible="false">
+            <String fx:value="&lt;25"/>
+            <String fx:value="25-34"/>
+            <String fx:value="35-44"/>
+            <String fx:value="45-54"/>
+            <String fx:value="&gt;54"/>
+          </CheckComboBox>
+          <Text fx:id="incomeText2" text="Income:" visible="false"/>
+          <CheckComboBox fx:id="incomeComboBox2" visible="false">
+                <String fx:value="Low"/>
+                <String fx:value="Medium"/>
+                <String fx:value="High"/>
+          </CheckComboBox>
+          <Text fx:id="contextText2" text="Context:"  visible="false"/>
+          <CheckComboBox fx:id="contextComboBox2"  visible="false">
+            <String fx:value="Blog"/>
+            <String fx:value="Social Media"/>
+            <String fx:value="News"/>
+            <String fx:value="Shopping"/>
+          </CheckComboBox>
+        </HBox>
+      </VBox>
+    </HBox>
+  </center>
+
+  <bottom>
+  </bottom>
+
+  <left>
+    <VBox alignment="CENTER_LEFT" spacing="25">
+      <HBox spacing="10">
+        <Text text = "Graph 1 Metric"/>
+        <ComboBox onAction="#applyMetric" value="Select Metric" userData="0,0">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Select Metric"/>
+              <String fx:value="Number of clicks"/>
+              <String fx:value="Total cost"/>
+              <String fx:value="Cost per click"/>
+              <String fx:value="Distribution of clicks"/>
+              <String fx:value="Cost per 1000 impressions"/>
+              <String fx:value="Average clicks per impression"/>
+              <String fx:value="Number of unique users"/>
+              <String fx:value="Number of impressions"/>
+              <String fx:value="Cost per conversion"/>
+              <String fx:value="Number of conversions"/>
+              <String fx:value="Number of bounces"/>
+              <String fx:value="Rate of bounces"/>
+            </FXCollections>
+          </items>
+        </ComboBox>
+      </HBox>
+      <HBox spacing="10">
+        <Text text="Overlay Metric" fx:id="overlayText"/>
+        <ComboBox onAction="#applyMetric" value="Select Overlay" userData="0,1">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Select Overlay"/>
+              <String fx:value="Number of clicks"/>
+              <String fx:value="Total cost"/>
+              <String fx:value="Cost per click"/>
+              <String fx:value="Distribution of clicks"/>
+              <String fx:value="Cost per 1000 impressions"/>
+              <String fx:value="Average clicks per impression"/>
+              <String fx:value="Number of unique users"/>
+              <String fx:value="Number of impressions"/>
+              <String fx:value="Cost per conversion"/>
+              <String fx:value="Number of conversions"/>
+              <String fx:value="Number of bounces"/>
+              <String fx:value="Rate of bounces"/>
+            </FXCollections>
+          </items>
+        </ComboBox>
+      </HBox>
+      <HBox spacing="10">
+        <Text text="Graph 2 Metric"/>
+        <ComboBox onAction="#applyMetric" value="Select 2nd Metric" userData="1,0" fx:id="metric2Button">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Select 2nd Metric"/>
+              <String fx:value="Number of clicks"/>
+              <String fx:value="Total cost"/>
+              <String fx:value="Cost per click"/>
+              <String fx:value="Distribution of clicks"/>
+              <String fx:value="Cost per 1000 impressions"/>
+              <String fx:value="Average clicks per impression"/>
+              <String fx:value="Number of unique users"/>
+              <String fx:value="Number of impressions"/>
+              <String fx:value="Cost per conversion"/>
+              <String fx:value="Number of conversions"/>
+              <String fx:value="Number of bounces"/>
+              <String fx:value="Rate of bounces"/>
+            </FXCollections>
+          </items>
+        </ComboBox>
+      </HBox>
+      <HBox spacing="10">
+        <Text text="Graph 3 Metric"/>
+        <ComboBox onAction="#applyMetric" value="Select 3rd Metric" userData="2,0">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Select 3rd Metric"/>
+              <String fx:value="Number of clicks"/>
+              <String fx:value="Total cost"/>
+              <String fx:value="Cost per click"/>
+              <String fx:value="Distribution of clicks"/>
+              <String fx:value="Cost per 1000 impressions"/>
+              <String fx:value="Average clicks per impression"/>
+              <String fx:value="Number of unique users"/>
+              <String fx:value="Number of impressions"/>
+              <String fx:value="Cost per conversion"/>
+              <String fx:value="Number of conversions"/>
+              <String fx:value="Number of bounces"/>
+              <String fx:value="Rate of bounces"/>
+            </FXCollections>
+          </items>
+        </ComboBox>
+      </HBox>
+      <HBox spacing = "10">
+        <Text text="Time granularity:"/>
+        <ComboBox value="Day" fx:id="timeButton" onAction="#applyTime">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Hour"/>
+              <String fx:value="Day"/>
+              <String fx:value="Month"/>
+            </FXCollections>
+          </items>
+        </ComboBox>
+      </HBox>
+      <fx:include fx:id="bounceFields" source="bounce.fxml"/>
+    </VBox>
+  </left>
+  <right>
+  </right>
+
+</BorderPane>
