@@ -1,7 +1,7 @@
 <h1>Ad revenue dashboard</h1>
 
 <h2>Description</h2>
-Developed an advertising analytics tool as part of a group project in Java using Agile Scrum practices. Contributed to sprint planning, stand-ups, and retrospectives, while managing iterative progress with burndown charts. Helped define user requirements through personas, user stories, and storyboards, and maintained software quality via boundary, regression, and acceptance testing.
+Developed an advertising analytics tool as part of a group project in Java using Agile Scrum practices. The application helps companies evaluate the effectiveness of their advertising campaigns through an interactive dashboard that displays key performance metrics. These metrics assess campaign performance based on factors such as the number of users who visited or clicked on a page and the amount of time they spent on it. Users can visualize and compare these metrics through dynamic, side-by-side graphs for deeper insights.
 <br />
 
 <h2>Languages and Utilities Used</h2>
